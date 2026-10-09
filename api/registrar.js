@@ -28,9 +28,9 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Debes marcar la casilla para confirmar la descarga.' });
   }
 
-  // Obtener variables de entorno configuradas en Vercel o en .env
-  const supabaseUrl = process.env.SUPABASE_URL;
-  const supabaseKey = process.env.SUPABASE_ANON_KEY;
+  // Obtener variables de entorno configuradas en Vercel o en .env (mayúsculas o minúsculas)
+  const supabaseUrl = process.env.SUPABASE_URL || process.env.supabase_url;
+  const supabaseKey = process.env.SUPABASE_ANON_KEY || process.env.supabase_anon_key;
 
   if (!supabaseUrl || !supabaseKey) {
     console.error('Faltan configurar las variables de entorno SUPABASE_URL o SUPABASE_ANON_KEY en Vercel.');
